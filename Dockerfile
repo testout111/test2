@@ -15,7 +15,7 @@ RUN apk update && \
     tar -zxvf /opt/caddy/caddy_2.4.6_linux_amd64.tar.gz && \
     unzip /opt/xray Xray-linux-64.zip && \
     unzip /var/mikutap-master.zip
-    cp /tmp/Caddyfile > /opt/caddy/Caddyfile && \
+    mv /tmp/Caddyfile /opt/caddy/Caddyfile && \
     cat /tmp/xray_config.json | sed -e "s/\$AUUID/$AUUID/g" >/opt/xray/xray_config.json && \
     mv /var/mikutap-master /var/html && \
     chmod +x /start.sh
