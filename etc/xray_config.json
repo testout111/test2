@@ -1,5 +1,5 @@
 {
-    "inbounds":
+    "inbounds": 
     [
         {
             "listen": "/opt/caddy/vmess","protocol": "vmess",
@@ -7,13 +7,15 @@
             "streamSettings": {"network": "ws","wsSettings": {"path": "/v2"}}
         }
     ],
-    "outbounds":
+    
+    "outbounds": 
     [
         {"protocol": "freedom","tag": "direct","settings": {}}
     ],
-    "routing":
+    
+    "routing": 
     {
-        "rules":
+        "rules": 
         [
             {"type": "field","inboundTag": ["onetag"],"outboundTag": "twotag"}
         ]
