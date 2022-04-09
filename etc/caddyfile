@@ -1,18 +1,23 @@
-:80
-root * /opt/caddy/html
-file_server browse
-
-header {
-    X-Robots-Tag none
-    X-Content-Type-Options nosniff
-    X-Frame-Options DENY
-    Referrer-Policy no-referrer-when-downgrade
+{
+    "inbounds": 
+    [
+        {
+            "listen": "/opt/caddy/vmess","protocol": "vmess",
+            "settings": {"clients": [{"id": "$AUUID"}]},
+            "streamSettings": {"network": "ws","wsSettings": {"path": "/v2"}}
+        }
+    ],
+    
+    "outbounds": 
+    [
+        {"protocol": "freedom","tag": "direct","settings": {}}
+    ],
+    
+    "routing": 
+    {
+        "rules": 
+        [
+            {"type": "field","inboundTag": ["onetag"],"outboundTag": "twotag"}
+        ]
+    }
 }
-
-@websocket_xray_vmess {
-header Connection *Upgrade*
-header Upgrade    websocket
-path /v2
-}
-
-reverse_proxy @websocket_xray_vmess unix//opt/caddy/vmess
