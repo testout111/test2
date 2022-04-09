@@ -2,22 +2,22 @@ FROM alpine:edge
 
 ARG AUUID="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
 
-ADD etc/Caddyfile /tmp/Caddyfile
-ADD etc/xray_config.json /tmp/xray_config.json
+COPY etc/Caddyfile /tmp/Caddyfile
+COPY etc/xray_config.json /tmp/xray_config.json
+COPY start.sh /start.sh
 
 RUN apk update && \
-    apk add --no-cache ca-certificates caddy wget && \
+    mkdir /opt/caddy && \
     mkdir /opt/xray && \
-    mkdir -p /opt/caddy/html && \
-    wget -O /tmp/Xray-linux-64.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip && \
-    unzip /tmp/Xray-linux-64.zip && \
-    mv /tmp/xray /opt/xray/ && \
-    chmod +x /opt/xray/xray && \
-    mv /tmp/Caddyfile /opt/caddy/ && \
+    wget -O /opt/caddy https://github.com/caddyserver/caddy/releases/download/v2.4.6/caddy_2.4.6_linux_amd64.tar.gz && \
+    wget -O /opt/xray https://github.com/XTLS/Xray-core/releases/download/v1.5.4/Xray-linux-64.zip && \
+    wget -O /var/mikutap-master.zip https://github.com/AYJCSGM/mikutap/archive/refs/heads/master.zip && \
+    tar -zxvf /opt/caddy/caddy_2.4.6_linux_amd64.tar.gz && \
+    unzip /opt/xray Xray-linux-64.zip && \
+    unzip /var/mikutap-master.zip
+    mv /tmp/Caddyfile /opt/caddy && \
     cat /tmp/xray_config.json | sed -e "s/\$AUUID/$AUUID/g" >/opt/xray/xray_config.json && \
-    echo "/opt/xray/xray -config /opt/xray/xray_config.json > /dev/null 2>&1 &" > /start.sh && \
-    echo "caddy run --config /opt/caddy/caddyfile --adapter caddyfile" > start.sh
-    
-RUN chmod +x /start.sh
+    mv /var/mikutap-master /var/html && \
+    chmod +x /start.sh
 
-CMD /start.sh
+ENTRYPOINT /start.sh
