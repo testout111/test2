@@ -1,5 +1,8 @@
 FROM alpine:edge
 
+EXPOSE 80
+EXPOSE 443
+
 ARG AUUID="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
 
 COPY ./etc/Caddyfile /tmp/Caddyfile
