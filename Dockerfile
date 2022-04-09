@@ -7,6 +7,7 @@ COPY ./etc/xray_config.json /tmp/xray_config.json
 COPY ./start.sh /start.sh
 
 RUN apk update && \
+    add --no-cache ca-certificates unzip wget && \
     mkdir /opt/caddy && \
     mkdir /opt/xray && \
     wget -O /opt/caddy/caddy_2.4.6_linux_amd64.tar.gz https://github.com/caddyserver/caddy/releases/download/v2.4.6/caddy_2.4.6_linux_amd64.tar.gz && \
