@@ -13,9 +13,6 @@ RUN apk update && \
     unzip /tmp/Xray-linux-64.zip && \
     mv /tmp/xray /opt/xray/ && \
     chmod +x /opt/xray/xray && \
-    wget https://github.com/AYJCSGM/mikutap/archive/master.zip && \
-    unzip /master.zip && \
-    mv /mikutap-master/* /opt/caddy/html && \
     mv /tmp/Caddyfile /opt/caddy/ && \
     cat /tmp/xray_config.json | sed -e "s/\$AUUID/$AUUID/g" >/opt/xray/xray_config.json && \
     echo "/opt/xray/xray -config /opt/xray/xray_config.json > /dev/null 2>&1 &" > /start.sh && \
