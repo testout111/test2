@@ -1,0 +1,21 @@
+{
+    "inbounds":
+    [
+        {
+            "listen": "/opt/caddy/vmess","protocol": "vmess",
+            "settings": {"clients": [{"id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"}]},
+            "streamSettings": {"network": "ws","wsSettings": {"path": "/v2"}}
+        }
+    ],
+    "outbounds":
+    [
+        {"protocol": "freedom","tag": "direct","settings": {}}
+    ],
+    "routing":
+    {
+        "rules":
+        [
+            {"type": "field","inboundTag": ["onetag"],"outboundTag": "twotag"}
+        ]
+    }
+}
