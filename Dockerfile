@@ -6,7 +6,7 @@ ADD etc/Caddyfile /tmp/Caddyfile
 ADD etc/xray_config.json /tmp/xray_config.json
 
 RUN apk update && \
-    apk add --no-cache ca-certificates caddy wget unzip && \
+    apk add --no-cache ca-certificates caddy wget && \
     mkdir /opt/xray && \
     mkdir -p /opt/caddy/html && \
     wget -O /tmp/Xray-linux-64.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip && \
