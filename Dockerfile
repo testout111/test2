@@ -24,4 +24,4 @@ RUN apk update && \
 
 RUN chmod +x /start.sh
 
-ENTRYPOINT /start.sh
+CMD /start.sh
