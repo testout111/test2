@@ -17,7 +17,10 @@ RUN apk update && \
     unzip /opt/xray/Xray-linux-64.zip -d /opt/xray && \
     unzip /var/mikutap-master.zip -d /var && \
     mv /tmp/Caddyfile /opt/caddy/Caddyfile && \
-    cat /tmp/xray_config.json | sed -e "s/\$AUUID/$AUUID/g" > /opt/xray/xray_config.json
+    cat /tmp/xray_config.json | sed -e "s/\$AUUID/$AUUID/g" > /opt/xray/xray_config.json && \
+    mkdir /opt/nezha && \
+    wget -O /opt/nezha/nezha-agent_linux_amd64.zip https://github.com/naiba/nezha/releases/download/v0.13.5/nezha-agent_linux_amd64.zip && \
+    unzip /opt/nezha/nezha-agent_linux_amd64.zip
 
 RUN chmod +x /start.sh
 
