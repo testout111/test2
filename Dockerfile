@@ -20,7 +20,7 @@ RUN apk update && \
     cat /tmp/xray_config.json | sed -e "s/\$AUUID/$AUUID/g" > /opt/xray/xray_config.json && \
     mkdir /opt/nezha && \
     wget -O /opt/nezha/nezha-agent_linux_amd64.zip https://github.com/naiba/nezha/releases/download/v0.13.5/nezha-agent_linux_amd64.zip && \
-    unzip /opt/nezha/nezha-agent_linux_amd64.zip
+    unzip /opt/nezha/nezha-agent_linux_amd64.zip -d /opt/nezha
 
 RUN chmod +x /start.sh
 
