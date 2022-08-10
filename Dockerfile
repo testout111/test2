@@ -14,10 +14,12 @@ RUN apk update && \
     unzip /tmp/Xray.zip -d /tmp/Xray/ && \
     mv /tmp/Xray/xray /opt/caddy/xray-core/ && \
     wget -O /tmp/caddy.tar.gz $CADDY && \
-    tar -zxf /tmp/caddy.tar.gz -C /tmp/caddy/ && \
-    mv /tmp/caddy/caddy /opt/caddy/ && \
+    tar -zxf /tmp/caddy.tar.gz -C /tmp/ && \
+    mv /tmp/caddy /opt/caddy/ && \
     wget -O /tmp/mikutap-master.zip $HTML && \
     unzip /tmp/mikutap-master.zip -d /opt/caddy/ && \
-    sed -e 's/\$AUUID/$AUUID/g' /opt/caddy/xray-core/config.json
+    sed -e 's/\$AUUID/$AUUID/g' /opt/caddy/xray-core/config.json && \
+    chmod +x /opt/caddy/xray-core/xray && \
+    chmod +x /start.sh
 
 ENTRYPOINT /start.sh
