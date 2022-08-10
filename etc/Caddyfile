@@ -1,5 +1,5 @@
 :80
-root * /var/mikutap-master
+root * /opt/caddy/mikutap-master
 file_server browse
 
 header {
