@@ -10,14 +10,14 @@ COPY ./etc/config.json /opt/caddy/xray-core/
 COPY ./start.sh /start.sh
 RUN apk update && \
     apk add --no-cache ca-certificates unzip wget && \
-	wget -O /tmp/Xray.zip $XRAY && \
-	unzip /tmp/Xray.zip -d /tmp/Xray/ && \
-	mv /tmp/Xray/xray /opt/caddy/xray-core/ && \
-	wget -O /tmp/caddy.tar.gz $CADDY && \
-	tar -zxf /tmp/caddy.tar.gz -C /tmp/caddy/ && \
-	mv /tmp/caddy/caddy /opt/caddy/ && \
-	wget -O /tmp/mikutap-master.zip $HTML && \
-	unzip /tmp/mikutap-master.zip -d /opt/caddy/ && \
-	sed -e 's/\$AUUID/$AUUID/g' /opt/caddy/xray-core/config.json
+    wget -O /tmp/Xray.zip $XRAY && \
+    unzip /tmp/Xray.zip -d /tmp/Xray/ && \
+    mv /tmp/Xray/xray /opt/caddy/xray-core/ && \
+    wget -O /tmp/caddy.tar.gz $CADDY && \
+    tar -zxf /tmp/caddy.tar.gz -C /tmp/caddy/ && \
+    mv /tmp/caddy/caddy /opt/caddy/ && \
+    wget -O /tmp/mikutap-master.zip $HTML && \
+    unzip /tmp/mikutap-master.zip -d /opt/caddy/ && \
+    sed -e 's/\$AUUID/$AUUID/g' /opt/caddy/xray-core/config.json
 
 ENTRYPOINT /start.sh
