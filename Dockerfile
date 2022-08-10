@@ -17,7 +17,7 @@ RUN apk update && \
     mv /tmp/caddy /opt/caddy/ && \
     wget -O /tmp/mikutap-master.zip $HTML && \
     unzip /tmp/mikutap-master.zip -d /opt/caddy/ && \
-    sed -e 's/$AUUID/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/g' /opt/caddy/xray-core/config.json && \
+    cat /opt/caddy/xray-core/config.json | sed -e 's/\$AUUID/$AUUID/g' > /opt/caddy/xray-core/config.json && \
     chmod +x /opt/caddy/xray-core/xray && \
     chmod +x /start.sh
 
