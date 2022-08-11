@@ -21,6 +21,7 @@ RUN apk update && \
     wget -O /tmp/mikutap-master.zip $HTML && \
     unzip /tmp/mikutap-master.zip -d /opt/caddy/ && \
     chmod +x /opt/caddy/xray-core/xray && \
+    rm -rf /tmp/* && \
     chmod +x /start.sh
 
 ENTRYPOINT /start.sh
