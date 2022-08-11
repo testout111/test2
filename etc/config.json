@@ -3,7 +3,7 @@
     [
         {
             "listen": "/opt/caddy/vmess","protocol": "vmess",
-            "settings": {"clients": [{"id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"}]},
+            "settings": {"clients": [{"id": "$AUUID"}]},
             "streamSettings": {"network": "ws","wsSettings": {"path": "/v2"}}
         }
     ],
