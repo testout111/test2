@@ -13,7 +13,7 @@ RUN apk update && \
     wget -O /tmp/Xray.zip $XRAY && \
     unzip /tmp/Xray.zip -d /tmp/Xray/ && \
     mv /tmp/Xray/xray /opt/caddy/xray-core/ && \
-    cat /tmp/config/config.json | sed -e 's/$AUUID/'"${AUUID}"'/g' /opt/caddy/xray-core/config.json && \
+    cat /tmp/config/config.json | sed -e 's/$AUUID/'"${AUUID}"'/g' > /opt/caddy/xray-core/config.json && \
     wget -O /tmp/caddy.tar.gz $CADDY && \
     tar -zxf /tmp/caddy.tar.gz -C /tmp/ && \
     mv /tmp/caddy /opt/caddy/ && \
