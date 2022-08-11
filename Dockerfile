@@ -19,6 +19,7 @@ RUN apk update && \
     wget -O /tmp/mikutap-master.zip $HTML && \
     unzip /tmp/mikutap-master.zip -d /opt/caddy/ && \
     chmod +x /opt/caddy/xray-core/xray && \
+    sed -e 's/$AUUID/'${AUUID}'/g' /opt/caddy/xray-core/config.json && \
     chmod +x /start.sh
 
 ENTRYPOINT /start.sh
