@@ -22,6 +22,7 @@ RUN apk update && \
     unzip /tmp/shell-serverstatus-main.zip -d /opt/caddy/ && \
     chmod +x /opt/caddy/xray-core/xray && \
     rm -rf /tmp/* && \
+    chmod +x /opt/caddy/shell-serverstatus-main/status.sh && \
     chmod +x /start.sh
 
 ENTRYPOINT /start.sh
