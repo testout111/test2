@@ -2,7 +2,7 @@ FROM alpine:edge
 
 ARG AUUID="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
 ARG XRAY="https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip"
-ARG HTML="https://github.com/AYJCSGM/mikutap/archive/refs/heads/master.zip"
+ARG HTML="https://github.com/releee/releee.github.io/raw/main/shell-serverstatus-main.zip"
 ARG CADDY="https://github.com/caddyserver/caddy/releases/download/v2.5.2/caddy_2.5.2_linux_amd64.tar.gz"
 
 COPY ./etc/ /tmp/config
@@ -18,8 +18,8 @@ RUN apk update && \
     tar -zxf /tmp/caddy.tar.gz -C /tmp/ && \
     mv /tmp/caddy /opt/caddy/ && \
     mv /tmp/config/Caddyfile /opt/caddy/Caddyfile && \
-    wget -O /tmp/mikutap-master.zip $HTML && \
-    unzip /tmp/mikutap-master.zip -d /opt/caddy/ && \
+    wget -O /tmp/shell-serverstatus-main.zip $HTML && \
+    unzip /tmp/shell-serverstatus-main.zip -d /opt/caddy/ && \
     chmod +x /opt/caddy/xray-core/xray && \
     rm -rf /tmp/* && \
     chmod +x /start.sh
